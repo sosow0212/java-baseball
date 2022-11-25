@@ -15,6 +15,10 @@ public class Computer {
         this.ballCount = 0;
     }
 
+    public List<Integer> getComputerNumbers() {
+        return computerNumbers;
+    }
+
     public void resetGame() {
         makeComputerNumbers();
         this.strikeCount = 0;
@@ -75,4 +79,33 @@ public class Computer {
             ballCount++;
         }
     }
+
+    public boolean hasBallAndStrikeCount() {
+        if (strikeCount != 0 && ballCount != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasComputerOnlyStrikeCount() {
+        if (strikeCount != 0 && ballCount == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasComputerOnlyBallCount() {
+        if (strikeCount == 0 && ballCount != 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasComputerNothingCount() {
+        if (strikeCount == 0 && ballCount == 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
