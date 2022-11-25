@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Computer {
@@ -9,8 +7,8 @@ public class Computer {
     private int strikeCount;
     private int ballCount;
 
-    public Computer() {
-        makeComputerNumbers();
+    public Computer(List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
         this.strikeCount = 0;
         this.ballCount = 0;
     }
@@ -19,21 +17,10 @@ public class Computer {
         return computerNumbers;
     }
 
-    public void resetGame() {
-        makeComputerNumbers();
+    public void resetGame(List<Integer> computerNumbers) {
+        this.computerNumbers = computerNumbers;
         this.strikeCount = 0;
         this.ballCount = 0;
-    }
-
-    private void makeComputerNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        this.computerNumbers = numbers;
     }
 
     public int getStrikeCount() {
