@@ -13,10 +13,6 @@ public class Computer {
         this.ballCount = 0;
     }
 
-    public List<Integer> getComputerNumbers() {
-        return computerNumbers;
-    }
-
     public void resetGame(List<Integer> computerNumbers) {
         this.computerNumbers = computerNumbers;
         this.strikeCount = 0;
