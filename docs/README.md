@@ -38,3 +38,9 @@
 - Exception
     - GameException
         - 게임에 관한 모든 예외를 처리해준다.
+
+- Util
+    - ComputerNumbersGenerator
+        - 게임에 필요한 랜덤 번호를 생성해준다.
+    - InputParser
+        - 유저의 입력을 도메인에서 필요한 타입으로 바꿔준다.
