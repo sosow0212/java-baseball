@@ -5,6 +5,7 @@ import baseball.domain.Computer;
 public class OutputView {
     private static final String STRIKE_MESSAGE = "스트라이크";
     private static final String BALL_MESSAGE = "볼 ";
+    private static final String NOTHING_MESSAGE = "낫싱";
 
     public void printStartGame() {
         System.out.println("숫자 야구 게임을 시작합니다.");
@@ -15,36 +16,34 @@ public class OutputView {
     }
 
     public void printGameCount(Computer computer) {
-        if (canPrintBallAndStrikeCount(computer)) {
+        checkHasBallAndStrikeCount(computer);
+        checkHasOnlyStrikeCount(computer);
+        checkHasOnlyBallCount(computer);
+        checkHasNothing(computer);
+    }
+
+    public void checkHasBallAndStrikeCount(Computer computer) {
+        if (computer.hasBallAndStrikeCount()) {
             System.out.println(computer.getBallCount() + BALL_MESSAGE + computer.getStrikeCount() + STRIKE_MESSAGE);
         }
-        if (canPrintOnlyStrikeCount(computer)) {
+    }
+
+    public void checkHasOnlyStrikeCount(Computer computer) {
+        if (computer.hasComputerOnlyStrikeCount()) {
             System.out.println(computer.getStrikeCount() + STRIKE_MESSAGE);
         }
-        if (canPrintOnlyBallCount(computer)) {
+    }
+
+    public void checkHasOnlyBallCount(Computer computer) {
+        if (computer.hasComputerOnlyBallCount()) {
             System.out.println(computer.getBallCount() + BALL_MESSAGE);
         }
     }
 
-    public boolean canPrintBallAndStrikeCount(Computer computer) {
-        if (computer.getStrikeCount() != 0 && computer.getBallCount() != 0) {
-            return true;
+    public void checkHasNothing(Computer computer) {
+        if (computer.hasComputerNothingCount()) {
+            System.out.println(NOTHING_MESSAGE);
         }
-        return false;
-    }
-
-    public boolean canPrintOnlyBallCount(Computer computer) {
-        if (computer.getBallCount() != 0 && computer.getStrikeCount() == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean canPrintOnlyStrikeCount(Computer computer) {
-        if (computer.getBallCount() == 0 && computer.getStrikeCount() != 0) {
-            return true;
-        }
-        return false;
     }
 
     public void printThreeStrike() {
