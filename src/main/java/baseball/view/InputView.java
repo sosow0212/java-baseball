@@ -1,17 +1,33 @@
 package baseball.view;
 
+import baseball.exception.GameException;
+import baseball.util.InputParser;
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class InputView {
-    public String inputUserNumbers() {
-        String userNumbers = Console.readLine();
-        // 예외 처리
-        return userNumbers;
+    GameException gameException = new GameException();
+    InputParser inputParser = new InputParser();
+
+    public List<Integer> inputUserNumbers() {
+        try {
+            String userNumbers = Console.readLine();
+            gameException.validateUserNumberInput(userNumbers);
+            return inputParser.userNumberParser(userNumbers);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            return inputUserNumbers();
+        }
     }
 
-    public String inputNextGameStatus() {
-        String nextGameStatus = Console.readLine();
-        // 예외 처리
-        return nextGameStatus;
+    public int inputNextGameStatus() {
+        try {
+            String nextGameStatus = Console.readLine();
+            gameException.validateNextGameStatusInput(nextGameStatus);
+            return inputParser.nextGameStatusParser(nextGameStatus);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            return inputNextGameStatus();
+        }
     }
 }
