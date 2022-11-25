@@ -10,26 +10,26 @@ public class Computer {
     private int ballCount;
 
     public Computer() {
-        this.computerNumbers = makeComputerNumbers();
+        makeComputerNumbers();
         this.strikeCount = 0;
         this.ballCount = 0;
     }
 
     public void resetGame() {
-        this.computerNumbers = makeComputerNumbers();
+        makeComputerNumbers();
         this.strikeCount = 0;
         this.ballCount = 0;
     }
 
-    private List<Integer> makeComputerNumbers() {
-        List<Integer> computerNumbers = new ArrayList<>();
-        while (computerNumbers.size() < 3) {
+    private void makeComputerNumbers() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computerNumbers.contains(randomNumber)) {
-                computerNumbers.add(randomNumber);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
             }
         }
-        return makeComputerNumbers();
+        this.computerNumbers = numbers;
     }
 
     public int getStrikeCount() {
