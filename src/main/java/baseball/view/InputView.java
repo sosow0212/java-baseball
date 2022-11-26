@@ -6,8 +6,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class InputView {
-    GameException gameException = new GameException();
-    InputParser inputParser = new InputParser();
+    private final GameException gameException = new GameException();
+    private final InputParser inputParser = new InputParser();
 
     public List<Integer> inputUserNumbers() {
         try {
